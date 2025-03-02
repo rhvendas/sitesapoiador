@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apoie meu conteúdo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            animation: fadeIn 1s ease;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #007BFF;
+        }
+        p {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .donation-option {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .donation-option:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        .donation-option:active {
+            background-color: #003b7d;
+            transform: scale(0.98);
+        }
+        .pix-code {
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-radius: 10px;
+            word-wrap: break-word;
+            max-width: 100%;
+            margin-top: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            color: #555;
+            display: none;
+        }
+        .alert {
+            color: #28a745;
+            font-size: 1.1em;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Apoie meu conteúdo!</h1>
+        <p>Se você aprecia o meu trabalho, considere fazer uma doação. Qualquer valor é bem-vindo e faz toda a diferença!</p>
+        
+        <div class="donation-option" onclick="copyPixCode('00020126580014br.gov.bcb.pix01366e4fcd89-03b3-4b3f-becb-1530a1ee5dcf52040000530398654045.005802BR5923Rhuan Igor Licurgo Much6008Brasilia62240520daqr20147465193748146304B24A')">
+            R$ 5,00
+        </div>
+        
+        <div class="donation-option" onclick="copyPixCode('00020126580014br.gov.bcb.pix01366e4fcd89-03b3-4b3f-becb-1530a1ee5dcf520400005303986540510.005802BR5923Rhuan Igor Licurgo Much6008Brasilia62240520daqr201474651948932063048665')">
+            R$ 10,00
+        </div>
+
+        <div class="donation-option" onclick="copyPixCode('00020126580014br.gov.bcb.pix01366e4fcd89-03b3-4b3f-becb-1530a1ee5dcf520400005303986540515.005802BR5923Rhuan Igor Licurgo Much6008Brasilia62240520daqr201474651951405663046CEE')">
+            R$ 15,00
+        </div>
+        
+        <div class="donation-option" onclick="copyPixCode('00020126580014br.gov.bcb.pix01366e4fcd89-03b3-4b3f-becb-1530a1ee5dcf520400005303986540520.005802BR5923Rhuan Igor Licurgo Much6008Brasilia62240520daqr201474651953735263041717')">
+            R$ 20,00
+        </div>
+
+        <div class="donation-option" onclick="copyPixCode('00020126580014br.gov.bcb.pix01366e4fcd89-03b3-4b3f-becb-1530a1ee5dcf5204000053039865802BR5923Rhuan Igor Licurgo Much6008Brasilia62240520daqr201474651956529963047DB5')">
+            Outro valor
+        </div>
+
+        <div id="alert-message" class="alert"></div>
+        <div id="pix-code-container" class="pix-code">
+            Código Pix será exibido aqui ao clicar em uma opção.
+        </div>
+    </div>
+
+    <script>
+        function copyPixCode(code) {
+            // Se o código for para "Outro valor", apenas avisa o usuário
+            if (code === '00020126580014br.gov.bcb.pix01366e4fcd89-03b3-4b3f-becb-1530a1ee5dcf5204000053039865802BR5923Rhuan Igor Licurgo Much6008Brasilia62240520daqr201474651956529963047DB5') {
+                document.getElementById("alert-message").textContent = "Obrigado pelo apoio! O código foi copiado.";
+                document.getElementById("pix-code-container").style.display = 'none';
+                return;
+            }
+
+            // Exibe o código Pix no contêiner
+            const pixCodeContainer = document.getElementById('pix-code-container');
+            pixCodeContainer.style.display = 'block';
+            pixCodeContainer.textContent = code;
+
+            // Cria a área de texto invisível para copiar o código Pix
+            const textArea = document.createElement('textarea');
+            textArea.value = code;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+
+            // Exibe a mensagem de sucesso
+            document.getElementById("alert-message").textContent = "Código Pix copiado com sucesso! Obrigado pela doação.";
+        }
+    </script>
+</body>
+</html>
